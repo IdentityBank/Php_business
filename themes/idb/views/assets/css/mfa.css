@@ -1,0 +1,32 @@
+.spacer-vertical-right {
+    padding-left: 20px;
+    padding-right: 20px;
+    float: left;
+    border-right: 2.5px solid;
+    border-top: 0;
+    border-bottom: 0;
+    border-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(226, 226, 226, 1) 48%, rgba(255, 255, 255, 0) 100%);
+    border-image-slice: 1;
+}
+
+.mfa-store-logo {
+    position: absolute;
+    width: 150px;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.numberCircle {
+    width: 48px;
+    height: 48px;
+    line-height: 43px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 32px;
+    border: 2px solid #091973;
+    background-color: red;
+    color: white;
+    font-weight: 600;
+}
