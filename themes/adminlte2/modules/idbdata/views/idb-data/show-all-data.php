@@ -468,6 +468,7 @@ $isUserDatabaseUsedForApproved = Yii::$app->user->identity->isUserDatabaseUsedFo
         afterSearch = JSON.parse(afterSearch);
         afterSearch = JSON.parse(afterSearch);
     }
+    console.log(afterSearch);
 
     <?php else: ?>
     let afterSearch = false;
