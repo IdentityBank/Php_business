@@ -179,6 +179,10 @@ $(document).ready(() => {
     function getStartOrder() {
         if (getColNumber() !== -1) {
             let url = new URL(window.location.href);
+<<<<<<< HEAD
+=======
+            console.log(getColNumber());
+>>>>>>> 76833b10d164cb764ef86ebbcfc120527f5422e2
             return [[getColNumber(), url.searchParams.get('sort-dir')]]
         }
 

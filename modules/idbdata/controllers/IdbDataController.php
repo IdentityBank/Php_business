@@ -238,6 +238,7 @@ class IdbDataController extends IdbController
         if (!empty($request->get('sort-by')) && !empty($request->get('sort-dir'))) {
             Yii::$app->session->set('sort-by', $request->get('sort-by'));
             Yii::$app->session->set('sort-dir', $request->get('sort-dir'));
+
             $this->dataProvider->sort = [
                 DataHTML::getUuid(
                     explode('-', $request->get('sort-by')),
