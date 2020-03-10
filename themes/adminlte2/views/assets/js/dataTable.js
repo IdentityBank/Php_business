@@ -179,7 +179,7 @@ $(document).ready(() => {
     function getStartOrder() {
         if (getColNumber() !== -1) {
             let url = new URL(window.location.href);
-
+            console.log(getColNumber());
             return [[getColNumber(), url.searchParams.get('sort-dir')]]
         }
 
@@ -189,10 +189,15 @@ $(document).ready(() => {
     function getUuid(displayName, metadata) {
         for (let data of metadata.data) {
             if (data.object_type === 'type'
-                && data.display_name === displayName[1]
-                && metadata.display_name === displayName[0]) {
+                && data.display_name === (displayName[1] !== undefined? displayName[1]: displayName[0])) {
 
-                return data.uuid;
+                if(displayName[1] !== undefined) {
+                    if(metadata.display_name === displayName[0]) {
+                        return data.uuid;
+                    }
+                } else {
+                    return data.uuid;
+                }
             } else if (data.object_type === 'set') {
                 if (getUuid(displayName, data) !== false) {
 
