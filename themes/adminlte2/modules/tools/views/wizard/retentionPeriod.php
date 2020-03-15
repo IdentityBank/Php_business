@@ -69,11 +69,11 @@ $frontAssets->updateRetentionPeriod();
                         <div class="form-group">
                             <h2><?= Translate::_('business', 'Storage time limitations') ?></h2>
 
-                            <?= $form->field($model, 'maximum')->input('number')
+                            <?= $form->field($model, 'maximum')->input('number', ['min' => 1, 'max' => 999999])
                                 ->label(Translate::_('business', "Maximum in Days")) ?>
 
                             <div class="after-maximum <?= empty($model->maximum)?'idb-hidden': ''?>">
-                            <?= $form->field($model, 'minimum')->input('number')
+                            <?= $form->field($model, 'minimum')->input('number', ['min' => 1, 'max' => 999999])
                                 ->label(Translate::_('business', "Minimum in Days")) ?>
 
                             <?= $form->field($model, 'onExpiry')
@@ -84,7 +84,7 @@ $frontAssets->updateRetentionPeriod();
                                     Translate::_('business', "On Expiry")
                                 ); ?>
 
-                            <?= $form->field($model, 'reviewCycle')->input('number')
+                            <?= $form->field($model, 'reviewCycle')->input('number', ['min' => 1, 'max' => 999999])
                                 ->label(Translate::_('business', "Review cycle in Days"))
                                 ->hint(Translate::_('business', "If you think you would like to keep data for longer provide review cycle value and we will send reminders."),
                                     ['tag' => 'div', 'class' => 'alert alert-info']) ?>
