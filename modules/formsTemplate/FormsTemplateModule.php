@@ -28,79 +28,26 @@
 # Namespace                                                                    #
 ################################################################################
 
-namespace app\assets;
+namespace app\modules\formsTemplate;
 
 ################################################################################
 # Use(s)                                                                       #
 ################################################################################
 
-use yii\web\AssetBundle;
+use yii\base\Module;
 
 ################################################################################
 # Class(es)                                                                    #
 ################################################################################
 
-class FrontAsset extends AssetBundle
+/**
+ * Class AccessmanagerModule
+ *
+ * @package app\modules\accessmanager
+ */
+class FormsTemplateModule extends Module
 {
 
-    public $sourcePath = '@app/frontend/';
-
-    public $js = [];
-
-    public function getAssetUrl()
-    {
-        return $this->baseUrl . '/';
-    }
-
-    public function checkBrowser()
-    {
-        $this->js[] = 'js/idb/signup/checkBrowser.js';
-    }
-
-    public function dataForm()
-    {
-        $this->js[] = 'js/adminlte/idb-data/dataForm.js';
-    }
-
-    public function idbStorageUpload()
-    {
-        $this->js[] = 'js/adminlte/idb-storage/upload.js';
-    }
-
-    public function idbStorageDownload()
-    {
-        $this->js[] = 'js/adminlte/idb-storage/download.js';
-    }
-
-    public function idbStoragePreview()
-    {
-        $this->js[] = 'js/adminlte/idb-storage/preview.js';
-    }
-
-    public function idbUpdateMessage()
-    {
-        $this->js[] = 'js/adminlte/tools/updateMessage.js';
-    }
-
-    public function idbUpdateTime()
-    {
-        $this->js[] = 'js/adminlte/tools/updateTime.js';
-    }
-
-    public function idbUpdateDpo()
-    {
-        $this->js[] = 'js/adminlte/tools/updateDpo.js';
-    }
-
-    public function updateRetentionPeriod()
-    {
-        $this->js[] = 'js/adminlte/tools/retentionPeriod.js';
-    }
-
-    public function loadEditor()
-    {
-        $this->js[] = 'js/adminlte/tools/editor.js';
-    }
 }
 
 ################################################################################

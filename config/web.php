@@ -126,6 +126,10 @@ $config = [
             'class' => 'app\modules\configuration\ConfigurationModule',
             'controllerNamespace' => 'app\modules\configuration\controllers',
         ],
+        'forms-template' => [
+            'class' => 'app\modules\formsTemplate\FormsTemplateModule',
+            'controllerNamespace' => 'app\modules\formsTemplate\controllers'
+        ]
     ],
     'components' => [
         'assetManager' => [
@@ -265,6 +269,7 @@ $config = [
                 'account-manager/<action>' => '/accessmanager/account-manager/<action>',
                 'user-manager/<action>' => '/accessmanager/user-manager/<action>',
                 'billing/<action>' => '/idbuser/billing/<action>',
+                //'forms-template/<action>' => '/forms-template/forms-template/<action>'
             ],
         ],
         'cache' => [

@@ -28,81 +28,44 @@
 # Namespace                                                                    #
 ################################################################################
 
-namespace app\assets;
+namespace app\modules\formsTemplate\controllers;
 
 ################################################################################
 # Use(s)                                                                       #
 ################################################################################
 
-use yii\web\AssetBundle;
+use app\controllers\IdbController;
+use yii\helpers\ArrayHelper;
 
 ################################################################################
 # Class(es)                                                                    #
 ################################################################################
 
-class FrontAsset extends AssetBundle
+/**
+ *
+ * Default controller for the `FormsTemplate` module
+ */
+class FormsTemplateController extends IdbController
 {
 
-    public $sourcePath = '@app/frontend/';
+    private static $params = [
+        'menu_active_section' => '[menu][template]',
+        'menu_active_item' => '[menu][template][editor]'
+    ];
 
-    public $js = [];
-
-    public function getAssetUrl()
+    public function actionIndex()
     {
-        return $this->baseUrl . '/';
-    }
-
-    public function checkBrowser()
-    {
-        $this->js[] = 'js/idb/signup/checkBrowser.js';
-    }
-
-    public function dataForm()
-    {
-        $this->js[] = 'js/adminlte/idb-data/dataForm.js';
-    }
-
-    public function idbStorageUpload()
-    {
-        $this->js[] = 'js/adminlte/idb-storage/upload.js';
-    }
-
-    public function idbStorageDownload()
-    {
-        $this->js[] = 'js/adminlte/idb-storage/download.js';
-    }
-
-    public function idbStoragePreview()
-    {
-        $this->js[] = 'js/adminlte/idb-storage/preview.js';
-    }
-
-    public function idbUpdateMessage()
-    {
-        $this->js[] = 'js/adminlte/tools/updateMessage.js';
-    }
-
-    public function idbUpdateTime()
-    {
-        $this->js[] = 'js/adminlte/tools/updateTime.js';
-    }
-
-    public function idbUpdateDpo()
-    {
-        $this->js[] = 'js/adminlte/tools/updateDpo.js';
-    }
-
-    public function updateRetentionPeriod()
-    {
-        $this->js[] = 'js/adminlte/tools/retentionPeriod.js';
-    }
-
-    public function loadEditor()
-    {
-        $this->js[] = 'js/adminlte/tools/editor.js';
+        return $this->render(
+            '@app/themes/adminlte2/views/site/template',
+            [
+                'params' => ArrayHelper::merge
+                (
+                    self::$params,
+                    [
+                        'content' => 'index'
+                    ]
+                )
+            ]
+        );
     }
 }
-
-################################################################################
-#                                End of file                                   #
-################################################################################
