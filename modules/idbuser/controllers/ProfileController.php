@@ -38,6 +38,7 @@ use app\controllers\IdbController;
 use app\helpers\AccessManagerHelper;
 use app\helpers\Translate;
 use Exception;
+use idbyii2\enums\NotificationTopic;
 use idbyii2\helpers\Account;
 use idbyii2\helpers\IdbAccountId;
 use idbyii2\helpers\IdbArrayHelper;
@@ -446,6 +447,7 @@ class ProfileController extends IdbController
             $notification = new NotificationsForm();
             $notification->uid = Yii::$app->user->identity->id;
             $notification->type = 'red';
+            $notification->topic = NotificationTopic::DELETE_ACCOUNT;
             $notification->status = 1;
             $notification->title = \idbyii2\helpers\Translate::_('business', 'Delete account has been started.');
             $notification->body = Translate::_(
@@ -495,7 +497,14 @@ class ProfileController extends IdbController
                     Account::deleteAndCheck(BusinessDeleteAccount::class, ['uid' => Yii::$app->user->identity->id]);
                 }
 
-                Account::deleteAndCheck(BusinessNotification::class, ['uid' => Yii::$app->user->identity->id, 'type' => 'red']);
+                Account::deleteAndCheck(
+                    BusinessNotification::class,
+                    [
+                        'uid' => Yii::$app->user->identity->id,
+                        'type' => 'red',
+                        'topic' => NotificationTopic::DELETE_ACCOUNT
+                    ]
+                );
             } catch (Exception $exception) {
                 Yii::error($exception->getMessage());
                 Yii::$app->session->setFlash(
