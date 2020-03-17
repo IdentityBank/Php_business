@@ -469,7 +469,7 @@ class IdbDataController extends IdbController
             }
 
             IdbAuditLog::saveByArray($request->post());
-            IdbAuditMessage::saveMessage($request->post('message'));
+            IdbAuditMessage::saveMessage(htmlspecialchars($request->post('message')));
 
             if (
                 is_null($sendSms) && is_null($sendMail)
