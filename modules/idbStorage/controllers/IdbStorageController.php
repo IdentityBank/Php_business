@@ -127,9 +127,9 @@ class IdbStorageController extends IdbController
         $IdBankClient = IdbBankClientBusiness::model($this->businessId);
         $metadata = json_decode($IdBankClient->getAccountMetadata()['Metadata'], true);
         $uploadLimit = Yii::$app->controller->module->configIdbStorage['uploadLimit'];
-        $options['peopleUpload'] = true;
-        if (ArrayHelper::getValue(ArrayHelper::getValue($metadata, 'options', []), 'peopleUpload', 'on') === 'off') {
-            $options['peopleUpload'] = false;
+        $options['peopleUpload'] = false;
+        if (ArrayHelper::getValue(ArrayHelper::getValue($metadata, 'options', []), 'peopleUpload', 'off') === 'on') {
+            $options['peopleUpload'] = true;
         }
 
         $modelRequest = new RequestUploadFormModel();
