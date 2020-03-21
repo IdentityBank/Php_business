@@ -158,6 +158,7 @@ class SiteController extends IdbController
      *
      * @return string|\yii\web\Response
      * @throws \yii\base\ExitException
+     * @throws Exception
      */
     public function actionLogin($post = null)
     {
@@ -192,10 +193,7 @@ class SiteController extends IdbController
             );
             $userAccount = IdbBusinessUser::findUserAccountByLogin($login);
             if ($userAccount) {
-                BusinessAuthlog::error(
-                    $userAccount->uid,
-                    ['p' => strlen($model->accountPassword) . "_" . time()]
-                );
+                BusinessAuthlog::findLatestErrors($model);
             }
         }
 
