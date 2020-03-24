@@ -21,9 +21,11 @@ $dbMenu = in_array(
 
 $administrationMenu = ($menu_active_section === '[menu][account_administration]');
 
-function menuText($string)
-{
-    return Html::encode(mb_strimwidth($string, 0, 25, '...'));
+if(!function_exists('menuText')) {
+    function menuText($string)
+    {
+        return Html::encode(mb_strimwidth($string, 0, 25, '...'));
+    }
 }
 
 ?>
