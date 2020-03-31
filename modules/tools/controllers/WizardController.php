@@ -1070,7 +1070,7 @@ class WizardController extends IdbController
 
                     $this->clientModel->setAccountMetadata(json_encode($this->metadata));
                     $lastId = Yii::$app->session->get('lastIndex', 0);
-                    Event::importAddEvents($this->clientModel, $lastId, $data, $this->metadata);
+                    Event::importAddEvents($this->clientModel, $lastId, $data, $this->metadata, $model);
                 }
 
                 return $this->redirect(['/tools/wizard/summary', 'id' => $id, 'file' => $file]);
