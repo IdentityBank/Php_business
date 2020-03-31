@@ -310,5 +310,6 @@ $dataAssets->createSetAssets();
         'normalCategoryMessage' => Translate::_('business', 'Normal'),
         'healthCategoryMessage' => Translate::_('business', 'Health'),
         'specialCategoryMessage' => Translate::_('business', 'Special'),
+        'pseudonymisationMessage' => Translate::_('business', 'Pseudonymisation'),
     ]
 ) ?>

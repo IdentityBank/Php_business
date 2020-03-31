@@ -155,6 +155,7 @@
             searchable: 1,
             sortable: 1,
             sensitive: 1,
+            pseudonymisation: 0,
             tag: '',
             used_for: 'us',
             required: 1,
@@ -206,6 +207,14 @@
                         sensitive = (data.sensitive === 'true');
                     }
 
+                    let pseudonymisation = false;
+                    if (data.pseudonymisation !== undefined) {
+                        if (data.pseudonymisation === 1) {
+                            data.pseudonymisation = 'true';
+                        }
+                        pseudonymisation = (data.pseudonymisation === 'true');
+                    }
+
                     if (data.category === undefined) {
                         data.category = 'normal';
                     }
@@ -221,6 +230,7 @@
                     html += '<label class="display-name">' + displayNameMessage + ':</label>';
                     html += '<label>' + requiredMessage + ': </label><span><input type="checkbox" data-key="required" data-uuid="' + data.uuid + '" name="required" ' + (required ? 'checked="true"' : '') + '"/></span>';
                     html += '<label>' + sensitiveMessage + ': </label><span><input type="checkbox" data-key="sensitive" data-uuid="' + data.uuid + '" name="sensitive" ' + (sensitive ? 'checked="true"' : '') + '"/></span>';
+                    html += '<label>' + pseudonymisationMessage + ': </label><span><input type="checkbox" data-key="pseudonymisation" data-uuid="' + data.uuid + '" name="pseudonymisation" ' + (pseudonymisation ? 'checked="true"' : '') + '"/></span>';
                     html += '<label>' + dataCategoryMessage + ': </label><span>' +
                         '<select data-key="category" data-uuid="' + data.uuid + '" name="category">';
                     html += '<option value="normal" ' + (category === "normal" ? 'selected="selected"' : '') + '>' + normalCategoryMessage + '</option>';
