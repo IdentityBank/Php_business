@@ -21,11 +21,6 @@ $dbMenu = in_array(
 
 $administrationMenu = ($menu_active_section === '[menu][account_administration]');
 
-function menuText($string)
-{
-    return Html::encode(mb_strimwidth($string, 0, 25, '...'));
-}
-
 ?>
 
 <style>
@@ -48,7 +43,7 @@ function menuText($string)
                 'li',
                 Html::a(
                     Html::tag('i', null, ['class' => 'fa fa-dashboard']) .
-                    Html::tag('span', menuText(Translate::_('business', 'Dashboard'))),
+                    Html::tag('span', Translate::menuText(Translate::_('business', 'Dashboard'))),
                     ['/']
                 ),
                 [
@@ -60,7 +55,7 @@ function menuText($string)
                 <?=
                 Html::tag(
                     'li',
-                    menuText(Translate::_('business', 'My Vaults')),
+                    Translate::menuText(Translate::_('business', 'My Vaults')),
                     ['class' => 'header']
                 ); ?>
                 <?php foreach (Yii::$app->user->identity->userCurrentDatabases as $database) : ?>
@@ -85,7 +80,7 @@ function menuText($string)
                                 'li',
                                 Html::a(
                                     Html::tag('i', null, ['class' => 'fa fa-list']) .
-                                    Html::tag('span', menuText(Translate::_('business', 'Access vault'))),
+                                    Html::tag('span', Translate::menuText(Translate::_('business', 'Access vault'))),
                                     ['/idb-menu', 'dbid' => $database['dbid'], 'action' => '/idbdata/idb-data/show-all']
                                 ),
                                 [
@@ -103,7 +98,7 @@ function menuText($string)
                                 'li',
                                 Html::a(
                                     Html::tag('i', null, ['class' => 'fa fa-file']) .
-                                    Html::tag('span', menuText(Translate::_('business', 'File Management'))),
+                                    Html::tag('span', Translate::menuText(Translate::_('business', 'File Management'))),
                                     ['/idb-menu', 'dbid' => $database['dbid'], 'action' => '/idb-storage/index']
                                 ),
                                 [
@@ -118,7 +113,7 @@ function menuText($string)
                                 'li',
                                 Html::a(
                                     Html::tag('i', null, ['class' => 'fa fa-file-import']) .
-                                    Html::tag('span', menuText(Translate::_('business', 'Add More Data'))),
+                                    Html::tag('span', Translate::menuText(Translate::_('business', 'Add More Data'))),
                                     ['/idb-menu', 'dbid' => $database['dbid'], 'action' => '/tools/wizard/index']
                                 ),
                                 [
@@ -132,7 +127,7 @@ function menuText($string)
                                 'li',
                                 Html::a(
                                     Html::tag('i', null, ['class' => 'fa fa-clipboard']) .
-                                    Html::tag('span', menuText(Translate::_('business', 'View audit log'))),
+                                    Html::tag('span', Translate::menuText(Translate::_('business', 'View audit log'))),
                                     ['/idb-menu', 'dbid' => $database['dbid'], 'action' => '/logs/used-data']
                                 ),
                                 [
@@ -145,7 +140,7 @@ function menuText($string)
                                 'li',
                                 Html::a(
                                     Html::tag('i', null, ['class' => 'fa fa-users']) .
-                                    Html::tag('span', menuText(Translate::_('business', 'Connect with people'))),
+                                    Html::tag('span', Translate::menuText(Translate::_('business', 'Connect with people'))),
                                     [
                                         '/idb-menu',
                                         'dbid' => $database['dbid'],
@@ -162,7 +157,7 @@ function menuText($string)
                                 'li',
                                 Html::a(
                                     Html::tag('i', null, ['class' => 'fa fa-exchange']) .
-                                    Html::tag('span', menuText(Translate::_('business', 'Review change requests'))),
+                                    Html::tag('span', Translate::menuText(Translate::_('business', 'Review change requests'))),
                                     ['/idb-menu', 'dbid' => $database['dbid'], 'action' => '/logs/changed-data']
                                 ),
                                 [
@@ -176,7 +171,7 @@ function menuText($string)
                                 'li',
                                 Html::a(
                                     Html::tag('i', null, ['class' => 'fa fa-edit']) .
-                                    Html::tag('span', menuText(Translate::_('business', 'Send messages'))),
+                                    Html::tag('span', Translate::menuText(Translate::_('business', 'Send messages'))),
                                     [
                                         '/idb-menu',
                                         'dbid' => $database['dbid'],
@@ -194,7 +189,7 @@ function menuText($string)
                                 'li',
                                 Html::a(
                                     Html::tag('i', null, ['class' => 'fa fa-user-secret']) .
-                                    Html::tag('span', menuText(Translate::_('business', 'GDPR options'))),
+                                    Html::tag('span', Translate::menuText(Translate::_('business', 'GDPR options'))),
                                     [
                                         '/idb-menu',
                                         'dbid' => $database['dbid'],
@@ -211,7 +206,7 @@ function menuText($string)
                                 'li',
                                 Html::a(
                                     Html::tag('i', null, ['class' => 'fa fa-th-large']) .
-                                    Html::tag('span', menuText(Translate::_('business', 'Manage vault'))),
+                                    Html::tag('span', Translate::menuText(Translate::_('business', 'Manage vault'))),
                                     [
                                         '/idb-menu',
                                         'dbid' => $database['dbid'],
@@ -233,7 +228,7 @@ function menuText($string)
             <?=
             Html::tag(
                 'li',
-                menuText(Translate::_('business', 'Menu')),
+                Translate::menuText(Translate::_('business', 'Menu')),
                 ['class' => 'header']
             ); ?>
             <?php if (Yii::$app->user->can('organization_user')) : ?>
@@ -242,7 +237,7 @@ function menuText($string)
                     'li',
                     Html::a(
                         Html::tag('i', null, ['class' => 'fa fa-plus-square']) .
-                        Html::tag('span', menuText(Translate::_('business', 'Create new vault'))),
+                        Html::tag('span', Translate::menuText(Translate::_('business', 'Create new vault'))),
                         ['/tools/wizard/select-db']
                     ),
                     [
@@ -255,7 +250,7 @@ function menuText($string)
                     'li',
                     Html::a(
                         Html::tag('i', null, ['class' => 'fa fa-file-export']) .
-                        Html::tag('span', menuText(Translate::_('business', 'Manage exports'))),
+                        Html::tag('span', Translate::menuText(Translate::_('business', 'Manage exports'))),
                         ['/tools/export/index']
                     ),
                     [
@@ -269,7 +264,7 @@ function menuText($string)
                 'li',
                 Html::a(
                     Html::tag('i', null, ['class' => 'fa fa-gear']) .
-                    Html::tag('span', menuText(Translate::_('business', 'Account Administration'))) .
+                    Html::tag('span', Translate::menuText(Translate::_('business', 'Account Administration'))) .
                     Html::tag(
                         'span',
                         Html::tag('i', null, ['class' => 'fa fa-angle-left pull-right']),
@@ -284,7 +279,7 @@ function menuText($string)
                         'li',
                         Html::a(
                             Html::tag('i', null, ['class' => 'fa fa-users']) .
-                            Html::tag('span', menuText(Translate::_('business', 'Manage users'))),
+                            Html::tag('span', Translate::menuText(Translate::_('business', 'Manage users'))),
                             ['/accessmanager/user-manager']
                         ),
                         [
@@ -296,7 +291,7 @@ function menuText($string)
                         'li',
                         Html::a(
                             Html::tag('i', null, ['class' => 'fa fa-money-bill-wave']) .
-                            Html::tag('span', menuText(Translate::_('business', 'Billing'))),
+                            Html::tag('span', Translate::menuText(Translate::_('business', 'Billing'))),
                             ['/billing/index']
                         ),
                         [
@@ -308,7 +303,7 @@ function menuText($string)
                         'li',
                         Html::a(
                             Html::tag('i', null, ['class' => 'fa fa-cc-paypal']) .
-                            Html::tag('span', menuText(Translate::_('business', 'Payments'))),
+                            Html::tag('span', Translate::menuText(Translate::_('business', 'Payments'))),
                             ['/billing/payments']
                         ),
                         [
@@ -320,7 +315,7 @@ function menuText($string)
                         'li',
                         Html::a(
                             Html::tag('i', null, ['class' => 'fa fa-list-alt']) .
-                            Html::tag('span', menuText(Translate::_('business', 'Service Usage'))),
+                            Html::tag('span', Translate::menuText(Translate::_('business', 'Service Usage'))),
                             ['/billing/logs']
                         ),
                         [
@@ -332,7 +327,7 @@ function menuText($string)
                         'li',
                         Html::a(
                             Html::tag('i', null, ['class' => 'fa fa-user']) .
-                            Html::tag('span', menuText(Translate::_('business', 'Account Details'))),
+                            Html::tag('span', Translate::menuText(Translate::_('business', 'Account Details'))),
                             ['/profile']
                         ),
                         [
@@ -358,7 +353,7 @@ function menuText($string)
                                 'class' => 'fa fa-info-circle text-red'
                             ]
                         ) .
-                        Html::tag('span', menuText(Translate::_('business', 'Help library'))) .
+                        Html::tag('span', Translate::menuText(Translate::_('business', 'Help library'))) .
                         Html::tag(
                             'span',
                             Html::tag(
@@ -381,7 +376,7 @@ function menuText($string)
                             'li',
                             Html::a(
                                 Html::tag('i', null, ['class' => 'fa fa-question']) .
-                                Html::tag('span', menuText(Translate::_('business', 'How to ...'))),
+                                Html::tag('span', Translate::menuText(Translate::_('business', 'How to ...'))),
                                 Translate::_('business', 'https://www.identitybank.eu/help/business'),
                                 [
                                     'target' => '_blank',
@@ -403,7 +398,7 @@ function menuText($string)
                     Html::tag('i', null, ['class' => 'fa fa-sign-out text-red']) .
                     Html::tag(
                         'span',
-                        menuText(Translate::_('business', 'Logout')),
+                        Translate::menuText(Translate::_('business', 'Logout')),
                         ['class' => 'text-red']
                     ),
                     null,

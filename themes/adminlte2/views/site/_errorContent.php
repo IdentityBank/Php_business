@@ -5,6 +5,12 @@ use yii\helpers\Html;
 
 ?>
 
+<style>
+    .error-page > .error-content {
+        margin-left: 10px;
+    }
+</style>
+
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
