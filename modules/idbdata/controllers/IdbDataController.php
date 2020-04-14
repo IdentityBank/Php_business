@@ -38,6 +38,7 @@ use app\controllers\IdbController;
 use idb\idbank\BusinessIdBankClient;
 use idbyii2\helpers\AccessManager;
 use idbyii2\helpers\DataHTML;
+use idbyii2\helpers\Event;
 use idbyii2\helpers\Filters;
 use idbyii2\helpers\IdbAccountId;
 use idbyii2\helpers\Metadata;
@@ -570,6 +571,7 @@ class IdbDataController extends IdbController
                     }
 
                     if ($saveSuccess) {
+
                         $user = Yii::$app->user->identity;
                         $businessId = IdbAccountId::generateBusinessDbId(
                             $user->oid,
@@ -578,6 +580,8 @@ class IdbDataController extends IdbController
                         );
 
                         $metadata = json_decode($this->clientModel->getAccountMetadata()['Metadata'], true);
+                        Event::addEvent($response['QueryData'][0][0],$request->post('data'), $metadata, $this->clientModel);
+
                         $tmpMetadata = [];
                         $post = $request->post('data');
 
