@@ -47,7 +47,7 @@ if($type === 'pdf') {
                                 </div>
                             <?php elseif($type === 'pdf') : ?>
                                 <div class="center-viewer">
-                                    <canvas id="canvas-preview"></canvas>
+                                    <canvas id="canvas-preview" class="canvas-size"></canvas>
                                 </div>
                             <?php else : ?>
                                 <p><?= Translate::_('business', 'Preview is not available')?></p>
@@ -68,6 +68,11 @@ if($type === 'pdf') {
 
         .jumbo-player {
             background-color: #00a65a;
+        }
+
+        .canvas-size {
+            max-width: 75%;
+            max-height: 75%;
         }
     </style>
 
