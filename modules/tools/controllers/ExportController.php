@@ -176,6 +176,10 @@ class ExportController extends IdbController
                     $file->status = FileHelper::STATUS_TO_REMOVE;
                     $file->save();
                 }
+
+                if ($file instanceof BusinessExport && $file->status == FileHelper::STATUS_TO_REMOVE) {
+                    $file->delete();
+                }
             }
         }
 
