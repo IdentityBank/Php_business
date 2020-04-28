@@ -549,7 +549,12 @@ class BusinessConfig extends IdbYii2Config
 
     function getJSBusinessExtendedClientSetsCreator()
     {
-        return $this->getValue('"JS"."business"', 'extendedClientSetsCreator', 'true');
+        return $this->getValue('"JS"."business"', 'extendedClientSetsCreator');
+    }
+
+    function getDebugBusinessDebugMetadataView()
+    {
+        return $this->getValue('"Debug"."business"', 'debugMetadataView');
     }
 }
 

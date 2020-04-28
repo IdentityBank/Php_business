@@ -286,7 +286,7 @@ class DefaultController extends IdbController
         }
 
         $gdpr = Metadata::getGDPR($this->metadata);
-        $gdpr = $gdpr[array_key_first($gdpr)];
+        $gdpr = $gdpr[array_key_first($gdpr)] ?? [];
         if (isset($gdpr['listDataProcessors'])) {
             foreach ($gdpr['listDataProcessors'] as $key => $value) {
                 $gdpr['listDataProcessors'][$key] = strip_tags($value);

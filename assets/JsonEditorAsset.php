@@ -1,3 +1,4 @@
+<?php
 # * ********************************************************************* *
 # *                                                                       *
 # *   Business Portal                                                     *
@@ -24,93 +25,38 @@
 # * ********************************************************************* *
 
 ################################################################################
-# Yii Application Config                                                       #
+# Namespace                                                                    #
 ################################################################################
 
-"debug":false
-"theme":"adminlte2"
-"yiiEnableErrorHandler":true
+namespace app\assets;
 
-["Localization"]
-"browser":false
-"language":"en-GB"
-"defaultLanguage":"en-GB"
+################################################################################
+# Use(s)                                                                       #
+################################################################################
 
-["Log"]
-"logLevel":2
-"logName":"p57b.business"
-"logPath":"/var/log/p57b/p57b.business.log"
+use yii\web\AssetBundle;
 
-/*
- * environment: test or live
- * currency: default currency on the portal
- * apiKey: Api Key from Adyen admin panel
- * merchant: Merchant from Adyen admin panel
- */
-["Payment"]
-"environment":"test"
-"currency":"EUR"
-"apiKey":""
-"merchant":""
+################################################################################
+# Class(es)                                                                    #
+################################################################################
 
-["Audit"]
-"enabled":true
-"messageSeparator":"]|["
-"auditPath":"/var/log/p57b"
-"auditFile":"yii2_business_audit.log"
+class JsonEditorAsset extends AssetBundle
+{
 
-["Authentication"]
-"oauth":false
-
-["Yii2"."security"]
-"giiAllowedIP": null
-
-["Yii2"."business"]
-"skin":"skin-idb"
-"cookieValidationKey":"### IDB ## business ###"
-"identityByAccessTokenEnabled":false
-"enableAutoLogin":false
-"errorsToSendRecovery": 3
-"absoluteAuthTimeout":43200
-"authTimeout":3600
-
-["Yii2"."business"."upload"]
-"enabled": true
-"uploadLocation": "/data/upload"
-"maxFilesize": 25 // MB
-"timeout": 5000
-"chunkSize": 1048576 // 1MB
-
-["Yii2"."business"."download"]
-"enabled": true
-"downloadLocation": "/data/download"
-
-["Yii2"."business"."db"]
-"dbHost":"localhost"
-"dbPort":5432
-"dbName":"dbName"
-"dbUser":"dbUser"
-"dbPassword":"dbPassword"
-
-["Yii2"."business"."notifications"]
-"configNotifications":{ "blowfishCost":1,"dataPassword":"password" }
-
-["Yii2"."business"."modules"."idbuser"]
-"configUserAccount":{ "blowfishCost":1,"loginPassword":"password","uidPassword":"password" }
-"configUserData":{ "blowfishCost":1,"keyPassword":"password","valuePassword":"password" }
-
-["Yii2"."business"."modules"."idbdata"]
-"configAuditLog":{ "blowfishCost":1,"idbDataPassword":"password" }
-
-["Yii2"."business"."modules"."signup"]
-"configSignUp":{ "blowfishCost":1,"dataPassword":"password","authKeyPassword":"password","tokenPassword":"password" }
-"authenticatorSecurityKey": "Identity Bank"
-
-["JS"."business"]
-"extendedClientSetsCreator": false
-
-["Debug"."business"]
-"debugMetadataView": false
+    public $sourcePath = '@app/views/assets';
+    public $js =
+        [
+            'js/jsoneditor.min.js'
+        ];
+    public $css =
+        [
+            'css/jsoneditor.min.css',
+        ];
+    public $depends =
+        [
+            'yii\web\YiiAsset',
+        ];
+}
 
 ################################################################################
 #                                End of file                                   #
