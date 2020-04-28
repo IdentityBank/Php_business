@@ -266,9 +266,13 @@ class DefaultController extends IdbController
     {
         if (!empty(Yii::$app->request->isPost)) {
             if (!empty(Yii::$app->request->post('dpo'))) {
+                $post = Yii::$app->request->post('dpo');
+                foreach ($post as $key => $value) {
+                    $post[$key] = strip_tags($value);
+                }
                 Metadata::addToGdpr(
                     $this->metadata,
-                    ['listDataProcessors' => Yii::$app->request->post('dpo')]
+                    ['listDataProcessors' => $post]
                 );
                 $this->clientModel->setAccountMetadata(json_encode($this->metadata));
             }
@@ -283,6 +287,9 @@ class DefaultController extends IdbController
 
         $gdpr = Metadata::getGDPR($this->metadata);
         $gdpr = $gdpr[array_key_first($gdpr)];
+        foreach ($gdpr['listDataProcessors'] as $key => $value) {
+            $gdpr['listDataProcessors'][$key] = strip_tags($value);
+        }
         $dpos = ArrayHelper::getValue($gdpr, 'listDataProcessors', []);
         return $this->render(
             '@app/themes/adminlte2/views/site/template',
