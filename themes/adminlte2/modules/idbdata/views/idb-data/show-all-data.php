@@ -156,6 +156,13 @@ $isUserDatabaseUsedForApproved = Yii::$app->user->identity->isUserDatabaseUsedFo
                             ['/tools/export/prepare'],
                             ['class' => 'btn btn-app']
                         ); ?>
+                        <?php if(BusinessConfig::get()->getDebugBusinessDebugMetadataView()) : ?>
+                        <?= Html::a(
+                            '<i class="fa fa-clipboard-list"></i> ' . Translate::_('business', 'Metadata'),
+                            ['idb-data/metadata'],
+                            ['class' => 'btn btn-app btn-app-red']
+                        ); ?>
+                        <?php endif; ?>
                         <?= Html::button(
                             '<span class="glyphicon glyphicon-cog"></span>' . Translate::_('business', 'Options'),
                             [

@@ -35,6 +35,7 @@ namespace app\modules\idbdata\controllers;
 ################################################################################
 
 use app\controllers\IdbController;
+use app\helpers\BusinessConfig;
 use idb\idbank\BusinessIdBankClient;
 use idbyii2\helpers\AccessManager;
 use idbyii2\helpers\DataHTML;
@@ -140,6 +141,11 @@ class IdbDataController extends IdbController
                 [
                     'allow' => true,
                     'actions' => ['delete'],
+                    'roles' => ['action_idbdata'],
+                ],
+                [
+                    'allow' => BusinessConfig::get()->getDebugBusinessDebugMetadataView(),
+                    'actions' => ['metadata'],
                     'roles' => ['action_idbdata'],
                 ],
             ];
@@ -753,6 +759,24 @@ class IdbDataController extends IdbController
                 ]
             );
         }
+    }
+
+    public function actionMetadata()
+    {
+        $metadata = $this->clientModel->getAccountMetadata()['Metadata'] ?? '';
+        return $this->render(
+            '@app/themes/adminlte2/views/site/template',
+            [
+                'params' => ArrayHelper::merge
+                (
+                    self::$params,
+                    [
+                        'content' => 'metadata',
+                        'contentParams' => ['metadata' => $metadata]
+                    ]
+                )
+            ]
+        );
     }
 }
 
